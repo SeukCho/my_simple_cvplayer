@@ -48,9 +48,11 @@ if video.isOpened():
         elif key == ord('\t'):
             speed_index = 4
         elif key == ord('>') or key == ord('.'):
-            speed_index = min(speed_index + 1, len(speed_table) - 1)
+            if reverse_mode == False:
+                speed_index = min(speed_index + 1, len(speed_table) - 1)
         elif key == ord('<') or key == ord(","):
-            speed_index = max(speed_index -1, 0)
+            if reverse_mode == False:
+                speed_index = max(speed_index -1, 0)
         elif key == ord(']') or key == ord('}'):
             frame += frame_shift
             video.set(cv.CAP_PROP_POS_FRAMES, frame)
